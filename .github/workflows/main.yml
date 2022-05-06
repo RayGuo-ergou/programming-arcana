@@ -1,0 +1,23 @@
+name: Run python
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: install clang-format
+        run: |
+          sudo apt update
+          sudo apt install -y clang-format
+      - name: checkout repository content
+        uses: actions/checkout@v2
+      - name: setup python
+        uses: actions/setup-python@v3
+      - name: run python Script
+        run: |
+          python3 run-clang-format.py -r .
