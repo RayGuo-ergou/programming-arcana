@@ -398,8 +398,8 @@ def main():
                 continue
             if not args.quiet:
                 print_diff(outs, use_color=colored_stdout)
-            if retcode == ExitStatus.SUCCESS:
-                retcode = ExitStatus.DIFF
+            # if retcode == ExitStatus.SUCCESS:
+            #     retcode = ExitStatus.DIFF
     if pool:
         pool.join()
     return retcode
