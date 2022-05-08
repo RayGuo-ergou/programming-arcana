@@ -393,6 +393,7 @@ def main():
             break
         else:
             sys.stderr.writelines(errs)
+            sys.stdout.writelines(errs)
             if outs == []:
                 continue
             if not args.quiet:
