@@ -20,4 +20,4 @@ jobs:
         uses: actions/setup-python@v3
       - name: run python Script
         run: |
-          python3 ./run-clang-format.py  -i ./code/c/array/array-copy.c
+          python3 run-clang-format.py -r .
