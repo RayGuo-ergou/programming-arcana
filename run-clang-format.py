@@ -345,6 +345,9 @@ def main():
 
     retcode = ExitStatus.SUCCESS
 
+    if args.dry_run:
+        retcode = ExitStatus.DIFF
+
     excludes = excludes_from_file(DEFAULT_CLANG_FORMAT_IGNORE)
     excludes.extend(args.exclude)
 
@@ -398,8 +401,8 @@ def main():
                 continue
             if not args.quiet:
                 print_diff(outs, use_color=colored_stdout)
-            # if retcode == ExitStatus.SUCCESS:
-            #     retcode = ExitStatus.DIFF
+            if retcode == ExitStatus.SUCCESS:
+                retcode = ExitStatus.DIFF
     if pool:
         pool.join()
     return retcode
